@@ -1,5 +1,5 @@
 
-package loginandsignup;
+package Project;
 
 
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ public class OpeatingSystems extends javax.swing.JFrame {
      
      DefaultTableModel model;
      int  rowCount =0;
+
      
      
   
@@ -21,6 +22,7 @@ public class OpeatingSystems extends javax.swing.JFrame {
        
         initComponents();
         NumberProcess.setText("1");
+        
         
                 
     }
@@ -206,6 +208,11 @@ public class OpeatingSystems extends javax.swing.JFrame {
         AddProcessInTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         AddProcessInTable.setForeground(new java.awt.Color(255, 255, 255));
         AddProcessInTable.setText("Add Process");
+        AddProcessInTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AddProcessInTableMouseEntered(evt);
+            }
+        });
         AddProcessInTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddProcessInTableActionPerformed(evt);
@@ -240,29 +247,26 @@ public class OpeatingSystems extends javax.swing.JFrame {
                             .addComponent(jLabel3)))
                     .addGroup(LeftLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(NumberProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(LeftLayout.createSequentialGroup()
-                                .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(LeftLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(AlgorithmsList, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(LeftLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel4)))
-                                .addGap(44, 44, 44))
-                            .addComponent(CPUTime, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddProcessInTable, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(NumberProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(LeftLayout.createSequentialGroup()
+                                    .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(LeftLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(AlgorithmsList, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(LeftLayout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel4)))
+                                    .addGap(44, 44, 44))
+                                .addComponent(CPUTime, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeftLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(RunAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121))
-            .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LeftLayout.createSequentialGroup()
-                    .addGap(92, 92, 92)
-                    .addComponent(AddProcessInTable, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(250, Short.MAX_VALUE)))
         );
         LeftLayout.setVerticalGroup(
             LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +279,9 @@ public class OpeatingSystems extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(28, 28, 28)
                 .addComponent(CPUTime, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addGap(26, 26, 26)
+                .addComponent(AddProcessInTable, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
@@ -284,11 +290,6 @@ public class OpeatingSystems extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(RunAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(133, Short.MAX_VALUE))
-            .addGroup(LeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LeftLayout.createSequentialGroup()
-                    .addGap(244, 244, 244)
-                    .addComponent(AddProcessInTable, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(320, Short.MAX_VALUE)))
         );
 
         jPanel1.add(Left);
@@ -321,7 +322,7 @@ public class OpeatingSystems extends javax.swing.JFrame {
         int WaitingTime[]= new int[rowCount];
         int TrunaroundTime []= new int[rowCount];
         
-        
+//        A
       if(AlgorithmsList.getSelectedItem().equals("FCFS")){
                  for(int i=0; i< rowCount; i++ ){
               Cputime[i] = Integer.parseInt(model.getValueAt(i, 1).toString());//Cpu time
@@ -339,6 +340,7 @@ public class OpeatingSystems extends javax.swing.JFrame {
         SetWaitingAndTrunAroud(WaitingTime,TrunaroundTime);
         ShowMessageAverageWT("FCFS");
       }
+//        B
       else if (AlgorithmsList.getSelectedItem().equals("SJF")){
            List<Object[]> TableData = new ArrayList<>();
          
@@ -377,12 +379,18 @@ public class OpeatingSystems extends javax.swing.JFrame {
     SeaderTableData(TableData);
         ShowMessageAverageWT("SJF");
       }
+//        C
       else if (AlgorithmsList.getSelectedItem().equals("Priority")){
 //          Add Column "Proriy Process "
-    model.addColumn("Priority.P");
+      if(model.getColumnCount() == 4){
+                    model.addColumn("Priority.P");
+
+      }
     
          for(int i=0 ;i < rowCount; i++){
-            String InputPriority = JOptionPane.showInputDialog(this, "Enter Number of Priority process"+i+1+":","Input Priority Process",JOptionPane.QUESTION_MESSAGE);
+             int number = i+1;
+             
+            String InputPriority = JOptionPane.showInputDialog(this, "Enter Number of Priority process"+number+":","Input Priority Process",JOptionPane.QUESTION_MESSAGE);
             model.setValueAt(InputPriority, i, 4);
          }
          
@@ -421,11 +429,12 @@ public class OpeatingSystems extends javax.swing.JFrame {
              
              
          }
-          SeaderTableData(TableData);
-          ShowMessageAverageWT("Priority Algorithm");
+          SeaderTableData(TableData);// in Algorithm FJS
+          ShowMessageAverageWT("Priority Algorithm");// in Algorithm FCFS
           
     
       }
+//        D
       else if (AlgorithmsList.getSelectedItem().equals("Round Robin")){
 //          Quyantam Time 
                String inputQuantam =  JOptionPane.showInputDialog(this,
@@ -490,18 +499,11 @@ public class OpeatingSystems extends javax.swing.JFrame {
                      }
                      
                      ShowMessageAverageWT("Round Robin");
-                 
-                
-                
+   
       }             
         
     }//GEN-LAST:event_RunAlgorithmActionPerformed
 
-    
-    
-    
-    
-    
     private void AddProcessInTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProcessInTableActionPerformed
                 model = (DefaultTableModel) Table.getModel();
                 if(CPUTime.getText().isEmpty()   ){
@@ -513,6 +515,8 @@ public class OpeatingSystems extends javax.swing.JFrame {
                 }
                 
                 else{
+                     process.setNumberProcess(Integer.parseInt(NumberProcess.getText()));
+                     process.setCpuTime(Integer.parseInt(CPUTime.getText()));
 //                         1-  Add to Table   
                         Add_To_Table();
 
@@ -523,24 +527,20 @@ public class OpeatingSystems extends javax.swing.JFrame {
                         ChangeState("Waiting");
                         
                 }
-           
-
-
-
-
- 
-
     }//GEN-LAST:event_AddProcessInTableActionPerformed
-
     private void AlgorithmsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlgorithmsListActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_AlgorithmsListActionPerformed
-             
+    private void AddProcessInTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddProcessInTableMouseEntered
+ 
+    }//GEN-LAST:event_AddProcessInTableMouseEntered
+           
     
+        
             private void ChangeState(String state){
                 
                 stateofProcess.setText(state);
             }
+            
             private void SeaderTableData(List<Object[]> TableDate ){
                 for (int i=0 ; i< TableDate.size(); i++){
                     Object[] row = TableDate.get(i);
