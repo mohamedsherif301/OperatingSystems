@@ -515,8 +515,7 @@ public class OpeatingSystems extends javax.swing.JFrame {
                 }
                 
                 else{
-                     process.setNumberProcess(Integer.parseInt(NumberProcess.getText()));
-                     process.setCpuTime(Integer.parseInt(CPUTime.getText()));
+                     
 //                         1-  Add to Table   
                         Add_To_Table();
 
