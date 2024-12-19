@@ -481,7 +481,7 @@ public class OpeatingSystems extends javax.swing.JFrame {
                                           currentTime += CPUTime;
                                           process[1] = 0;//cpu Time Finshed
                                           process[3] = currentTime;//trun Around time 
-                                          process[2] = (int) process[3]- CPUTime;
+                                          process[2] = (int) process[3]- backupCpuTime[tableData.indexOf(process)];  
                                           
                                           
                                           
